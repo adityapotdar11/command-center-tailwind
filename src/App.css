@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+:root {
+    --xn-neutral-black: #000000;
+    --xn-neutral-black-5: #F2F2F2;
+    --xn-neutral-black-10: #E6E6E6;
+    --xn-neutral-black-20: #CCCCCC;
+    --xn-neutral-black-30: #B3B3B3;
+    --xn-neutral-black-40: #999999;
+    --xn-neutral-black-50: #808080;
+    --xn-neutral-black-60: #666666;
+    --xn-neutral-black-70: #4D4D4D;
+    --xn-neutral-black-80: #333333;
+    --xn-neutral-black-90: #1A1A1A;
+    --xn-neutral-white: #FFFFFF;
+    --xn-primary: #004E7A;
+    --xn-accent: #FF9819;
+    --xn-system-success: #27AE60;
+    --xn-system-info: #2F80ED;
+    --xn-system-error: #FA4747;
+
+    /* Font Size */
+    --xn-subtext-s-font-size: 0.5rem;
+    --xn-subtext-m-font-size: 0.75rem;
+    --xn-subtext-l-font-size: 0.875rem;
+    --xn-paragraph-font-size: 1rem;
+}
+
+.xn-container {
+    max-width: 86.66%;
+    margin: auto;
+    padding-bottom: 2rem;
+}
+
+.xn-icon-sec {
+    font-size: 0px;
+    border-radius: 16px;
+    border: 2px solid var(--xn-neutral-black-10, #E6E6E6);
+    background: var(--xn-neutral-white, #FFF);
+    display: inline-block;
+    padding: 12px;
+}
+
+.xn-icon-sec-bg {
+    font-size: 0px;
+    border-radius: 16px;
+    border: 2px solid var(--xn-neutral-black-10, #E6E6E6);
+    background: var(--xn-neutral-black-10, #E6E6E6);
+    display: inline-block;
+    padding: 12px;
+}
+
+.xn-profile-img {
+    border-radius: 16px;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+
+.xn-p-black-50 {
+    color: var(--xn-neutral-black-50);
+    font-size: var(--xn-subtext-m-font-size);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+.xn-p-black-bold {
+    color: var(--xn-black);
+    font-size: var(--xn-paragraph-font-size);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%;
+}
+
+.xn-black-50-color {
+    color: var(--xn-neutral-black-50);
+}
+
+.xn-light-border {
+    border: 2px solid var(--xn-neutral-black-10, #E6E6E6);
+}
+
+.xn-header-tab li a {
+    border-radius: 16px;
+    padding: 1.125rem 1.5rem;
+    color: var(--xn-neutral-black-60, #666);
+    font-size: var(--xn-paragraph-font-size);
+    font-weight: 500;
+    line-height: 75%;
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+
+.xn-header-tab .active {
+    background: var(--xn-accent) !important;
+    color: var(--xn-neutral-white) !important;
+}
+
+header,
+body {
+    position: relative;
+}
+
+.xn-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--xn-neutral-black);
+    opacity: 0.3;
+    height: 100%;
+    z-index: 3;
+}
+
+.xn-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--xn-neutral-white);
+    width: 300px;
+    height: 100%;
+    opacity: 1;
+    z-index: 5;
+}
+
+.xn-sidebar-nav a {
+    display: flex;
+    font-size: var(--xn-paragraph-font-size);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    padding: 1rem 1rem 1rem 0rem;
+    color: var(--xn-neutral-black-60);
+    transition: 0.5s;
+}
