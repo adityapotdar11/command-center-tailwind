@@ -1,100 +1,102 @@
-import React from "react";
-import {
-    ArrowLeft,
-    Bell,
-    ChevronDown,
-    Menu,
-    ShoppingCart,
-} from "react-feather";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { ArrowLeft, Bell, ChevronDown, Menu, ShoppingCart } from "react-feather";
 
-const Header = ({ onSidebarOpen }) => {
+const Header = ({ onLeftSidebarOpen, onRightSidebarOpen }) => {
+    const [activeTab, setActiveTab] = useState("book-now");
+
     return (
-        <>
-            <div class="xn-container">
-                <header>
-                    <div class="flex flex-row py-4 items-center">
-                        <div class="flex-1">
-                            <div class="flex items-center">
-                                <a
-                                    class="me-6 xn-icon-sec"
-                                    onClick={onSidebarOpen}>
-                                    <Menu className="feather" />
-                                </a>
-                                <a class="me-6 xn-icon-sec">
-                                    <ArrowLeft className="feather" />
-                                </a>
-                                <a class="xn-logo">
-                                    <img
-                                        src="https://xenipay.com/command-center-25/assets/images/logo.svg"
-                                        alt="logo"
-                                    />
-                                </a>
+        <header>
+            <div className="flex flex-row py-4 items-center">
+                {/* Left Section */}
+                <div className="flex-1">
+                    <div className="flex items-center gap-5">
+                        {/* Left Sidebar Toggle */}
+                        <a
+                            className="xn-icon-sec"
+                            onClick={onLeftSidebarOpen}
+                        >
+                            <Menu className="feather" />
+                        </a>
+                        <a className="xn-icon-sec xn-arrow-back">
+                            <ArrowLeft className="feather" />
+                        </a>
+                        <a className="xn-logo">
+                            <img
+                                src="https://xenipay.com/command-center-25/assets/images/logo.svg"
+                                alt="logo"
+                            />
+                        </a>
+                    </div>
+                </div>
+
+                {/* Center Section (Tabs) */}
+                <div className="flex-1">
+                    <div className="flex justify-center">
+                        <nav className="xn-nav-tab">
+                            <ul className="list-none flex xn-light-border xn-header-tab">
+                                {[
+                                    { name: "Dashboard", path: "/dashboard" },
+                                    { name: "Book Now", path: "/book-now" },
+                                    { name: "Bookings", path: "/bookings" },
+                                ].map((tab) => (
+                                    <li key={tab.path}>
+                                        <NavLink
+                                            to={tab.path}
+                                            className={({ isActive }) =>
+                                                `cursor-pointer rounded-2xl px-4 py-2 ${
+                                                    isActive
+                                                        ? "bg-accent text-white"
+                                                        : "bg-transparent text-neutral-black-60"
+                                                }`
+                                            }
+                                        >
+                                            {tab.name}
+                                        </NavLink>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                {/* Right Section */}
+                <div className="flex-1">
+                    <div className="flex items-center justify-end gap-5">
+                        <a className="xn-icon-sec-bg">
+                            <Bell className="feather" />
+                        </a>
+                        <a className="xn-icon-sec-bg">
+                            <ShoppingCart className="feather" />
+                        </a>
+                        {/* Right Sidebar Toggle */}
+                        <div
+                            className="profile-sec flex items-center cursor-pointer"
+                            onClick={onRightSidebarOpen}
+                        >
+                            <div className="profile-img-sec">
+                                <img
+                                    src="https://xenipay.com/command-center-25/assets/images/profile-pic.png"
+                                    alt=""
+                                    className="xn-profile-img"
+                                />
                             </div>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex justify-center">
-                                <nav class="tab-nav">
-                                    <ul class="list-none flex xn-light-border rounded-2xl xn-header-tab">
-                                        <li>
-                                            <a
-                                                id="dashboard-btn"
-                                                class="rounded-2xl active"
-                                                data-href="dashboard">
-                                                Dashboard
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                id="book-now-btn"
-                                                data-href="book-now">
-                                                Book Now
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                id="bookings-btn"
-                                                data-href="bookings">
-                                                Bookings
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                            <div className="xn-profile text-end pl-4">
+                                <p className="xn-profile-name xn-p-black-bold">
+                                    James Roland
+                                </p>
+                                <p className="xn-profile-email pt-2 xn-p-black-50">
+                                    r.james@rolands.com
+                                </p>
                             </div>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center justify-end">
-                                <a class="me-6 xn-icon-sec-bg">
-                                    <Bell className="feather" />
-                                </a>
-                                <a class="me-6 xn-icon-sec-bg">
-                                    <ShoppingCart className="feather" />
-                                </a>
-                                <div class="profile-sec flex items-center">
-                                    <div class="profile-img-sec">
-                                        <img
-                                            src="https://xenipay.com/command-center-25/assets/images/profile-pic.png"
-                                            alt=""
-                                            class="xn-profile-img"
-                                        />
-                                    </div>
-                                    <div class="xn-profile text-end pl-4">
-                                        <p class="xn-profile-name xn-p-black-bold">
-                                            James Roland
-                                        </p>
-                                        <p class="xn-profile-email pt-2 xn-p-black-50">
-                                            r.james@rolands.com
-                                        </p>
-                                    </div>
-                                    <div class="arrow-sec xn-black-50-color">
-                                        <ChevronDown className="feather" />
-                                    </div>
-                                </div>
+                            <div className="arrow-sec xn-black-50-color">
+                                <ChevronDown className="feather" />
                             </div>
                         </div>
                     </div>
-                </header>
+                </div>
             </div>
-        </>
+        </header>
     );
 };
 
