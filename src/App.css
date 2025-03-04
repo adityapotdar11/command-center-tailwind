@@ -1,5 +1,9 @@
 @import "tailwindcss";
-
+ @theme {
+    --color-accent: #FF9819;
+    --color-neutral-black-60: #666666;
+    --color-neutral-black-5: #F2F2F2;
+} 
 :root {
     --xn-neutral-black: #000000;
     --xn-neutral-black-5: #F2F2F2;
@@ -24,12 +28,28 @@
     --xn-subtext-m-font-size: 0.75rem;
     --xn-subtext-l-font-size: 0.875rem;
     --xn-paragraph-font-size: 1rem;
+    --xn-medium-heading-font-size: 1.125rem;
+    --xn-heading1-font-size:1.25rem;
+    --xn-heading2-font-size:1.5rem;
+    --xn-heading3-font-size:2rem;
+    --xn-title1-font-size:2.25rem;
+    --xn-title2-font-size:2.5rem;
+    --xn-title3-font-size:3rem;
 }
+
+* {
+    font-family: 'Poppins', sans-serif;
+  }
 
 .xn-container {
     max-width: 86.66%;
     margin: auto;
     padding-bottom: 2rem;
+}
+
+header,
+body {
+    position: relative;
 }
 
 .xn-icon-sec {
@@ -43,11 +63,11 @@
 
 .xn-icon-sec-bg {
     font-size: 0px;
-    border-radius: 16px;
-    border: 2px solid var(--xn-neutral-black-10, #E6E6E6);
-    background: var(--xn-neutral-black-10, #E6E6E6);
+    border-radius: 1rem;
+    border: .125rem solid var(--xn-neutral-black-5, #f2f2f2);
+    background: var(--xn-neutral-black-5, #f2f2f2);
     display: inline-block;
-    padding: 12px;
+    padding: .75rem;
 }
 
 .xn-profile-img {
@@ -80,11 +100,12 @@
 .xn-light-border {
     border: 2px solid var(--xn-neutral-black-10, #E6E6E6);
 }
-
-.xn-header-tab li a {
-    border-radius: 16px;
+.xn-nav-tab ul {
+    border-radius: 1rem;
+}
+.xn-nav-tab li a {
+    border-radius: 1rem;
     padding: 1.125rem 1.5rem;
-    color: var(--xn-neutral-black-60, #666);
     font-size: var(--xn-paragraph-font-size);
     font-weight: 500;
     line-height: 75%;
@@ -93,14 +114,12 @@
     transition: .2s;
 }
 
-.xn-header-tab .active {
+
+.secondary-btn ,
+.xn-nav-tab .active {
     background: var(--xn-accent) !important;
     color: var(--xn-neutral-white) !important;
-}
-
-header,
-body {
-    position: relative;
+    border-radius: 1rem;
 }
 
 .xn-backdrop {
@@ -114,7 +133,8 @@ body {
     z-index: 3;
 }
 
-.xn-sidebar {
+/* sidebar css */
+.xn-left-nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -124,14 +144,111 @@ body {
     opacity: 1;
     z-index: 5;
 }
-
+.xn-right-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--xn-neutral-white);
+    width: 300px;
+    height: 100%;
+    opacity: 1;
+    z-index: 5;
+    transition: right .5s ease-in-out, opacity 0.5s ease-in-out;
+}
 .xn-sidebar-nav a {
     display: flex;
     font-size: var(--xn-paragraph-font-size);
     font-style: normal;
     font-weight: 600;
     line-height: 120%;
-    padding: 1rem 1rem 1rem 0rem;
+    padding: .7rem 1rem .7rem 0rem;
     color: var(--xn-neutral-black-60);
     transition: 0.5s;
+    align-items: center;
 }
+
+.xn-basic-plan {
+    background-color: var(--xn-neutral-black);
+    border-radius: 1rem;
+}
+.xn-basic-plan p {
+    color: var(--xn-neutral-white);
+}
+.xn-sidebar-nav .active {
+    stroke: var(--xn-accent);
+}
+
+.xn-sidebar-nav .active span {
+    color: var(--xn-primary);
+    font-weight: 700;
+}
+
+.xn-sidebar-nav li span {
+    color: var(--xn-neutral-black-60);
+    font-weight: 600;
+    font-size: var(--xn-paragraph-font-size);
+    line-height: 1rem;
+}
+
+.xn-sidebar-nav li a:hover, .xn-sidebar-nav li span:hover {
+    color: var(--xn-neutral-black-70);
+    stroke: var(--xn-neutral-black-70); 
+}
+
+.booknow-tab-filter {
+    border: .125rem solid var(--xn-neutral-black-10);
+    border-radius: 2rem;
+}
+
+.main-tab-head {
+    justify-items: center;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #fff;
+}
+
+a {
+    cursor: pointer;
+}
+.xn-arrow-back:hover svg {
+    animation: aniArrow02 3s;
+    transform-origin:0% 0%;
+}
+.xn-arrow-back:hover:before{
+    animation: aniArrow01 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+   }
+   
+   .xn-arrow-back:hover:after{
+    animation: aniArrow02 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+   }
+.xn-arrow-back svg {
+    position: relative;
+}
+.xn-arrow-back {
+    overflow: hidden;
+    display: -webkit-inline-box !important;
+    transition: all 0.3s ease;
+}
+@keyframes aniArrow01 {
+    0% {
+      transform:rotatez(-45deg) translateY(30px) translateX(30px);
+    }
+    100% {
+      transform: rotatez(-45deg) translateY(-35px) translateX(-35px);
+    }
+  }
+  
+  
+  @keyframes aniArrow02 {
+    0% {
+      transform:translateX(45px);
+    }
+    100% {
+      transform:translateX(-44px);
+    }
+  }
+  
