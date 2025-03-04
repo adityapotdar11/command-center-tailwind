@@ -1,19 +1,37 @@
 import React, { useState } from "react";
 import Header from "../Header";
 import LeftSidebar from "../LeftSidebar";
+import RightSidebar from "../RightSidebar";
 
 const Layout = (props) => {
-    const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const [isLeftSidebarOpen, setLeftSidebarOpen] = useState(false);
+    const [isRightSidebarOpen, setRightSidebarOpen] = useState(false);
 
-    const openSidebar = () => setSidebarOpen(true);
-    const closeSidebar = () => setSidebarOpen(false);
+    const openLeftSidebar = () => setLeftSidebarOpen(true);
+    const closeLeftSidebar = () => setLeftSidebarOpen(false);
+
+    const openRightSidebar = () => setRightSidebarOpen(true);
+    const closeRightSidebar = () => setRightSidebarOpen(false);
+
     return (
         <>
             <div className="xn-container">
-                <Header onSidebarOpen={openSidebar} />
-                {isSidebarOpen && <LeftSidebar onClose={closeSidebar} />}
+                <Header 
+                    onLeftSidebarOpen={openLeftSidebar} 
+                    onRightSidebarOpen={openRightSidebar} 
+                />
+
+                {isLeftSidebarOpen && <LeftSidebar onClose={closeLeftSidebar} />}
+                {isRightSidebarOpen && <RightSidebar onClose={closeRightSidebar} />}
+
                 {props.children}
-                {isSidebarOpen && <div class="xn-backdrop"></div>}
+
+                {(isLeftSidebarOpen || isRightSidebarOpen) && (
+                    <div className="xn-backdrop" onClick={() => {
+                        closeLeftSidebar();
+                        closeRightSidebar();
+                    }}></div>
+                )}
             </div>
         </>
     );
